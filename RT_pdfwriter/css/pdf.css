@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31.07.2014, 15:25:48
+    Author     : DIENST-JE
+*/
+
+#steuerung {
+	//background-color: yellow;
+	width: 10%;
+	float:left;
+}
+
+#zweite_spalte {
+	//background-color: green;
+	margin-left: 10%;
+}
