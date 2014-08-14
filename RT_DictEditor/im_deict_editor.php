@@ -1,7 +1,8 @@
 <?php
 
 addCSS("css/imdicteditor.css");
-
+addJS("js/jquery.tablesorter.min.js");
+addJS("js/editor.js");
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,10 +25,26 @@ function view_dict() {
     echo "<div id='dicteditor_c1'>";
     echo "</div>";
     echo "<div id='dicteditor_c2'>";
-    echo '<ul>';
-    foreach (getChapterList() as $chapter_no => $chapter)
-        echo '<li>' . mkA($chapter['name'], 'chapter', $chapter_no) . " (${chapter['wordc']} records)</li>";
-    echo '</ul>';
+    echo '<table id="myTable" class="tablesorter">';
+    echo '<thead><tr><th>Chapter Name</th><th>Records</th></tr></thead>';
+    echo '<tbody>';
+    foreach (getChapterList() as $chapter_no => $chapter) {
+        echo '<tr>';
+        echo '<td class="dicteditor_td1">';
+        echo '<a>';
+        echo '<div class="test" onclick="populateED(\'#dicteditor_c1\', \'help\', \'open\')">' . $chapter['name'] . '</div>';        
+        //echo '<div class="test" onclick="TestEditor(\'test\')">' . $chapter['name'] . '</div>';
+        echo '</a>';     
+        echo '</td>';
+        echo '<td class="dicteditor_td2">' . $chapter['wordc'] . '</td>';
+        echo '</tr>';
+    }
+    echo '</tbody>';
+    echo '</table>';
     echo "</div>";
     echo "</div>";
+
+    echo '<script type="text/javascript">';
+    echo '$("#myTable").tablesorter();';
+    echo '</script>';
 }
